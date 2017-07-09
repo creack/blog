@@ -1,0 +1,4 @@
+baseURL = "https://blog.charmes.net/"
+languageCode = "en-us"
+title = "Guillaume's Thoughts"
+theme = "hugo_theme_robust"
