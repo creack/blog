@@ -3,8 +3,8 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://blog.charmes.net/post/good-to-great/</loc>
-    <lastmod>2017-07-09T15:58:01-05:00</lastmod>
+    <loc>https://blog.charmes.net/post/release-go-code/</loc>
+    <lastmod>2014-11-09T19:01:11-05:00</lastmod>
   </url>
   
   <url>
@@ -13,19 +13,38 @@
   </url>
   
   <url>
+    <loc>https://blog.charmes.net/tags/docker/</loc>
+    <lastmod>2014-11-09T19:01:11-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.charmes.net/tags/golang/</loc>
+    <lastmod>2014-11-09T19:01:11-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.charmes.net/</loc>
-    <lastmod>2017-07-09T15:58:01-05:00</lastmod>
+    <lastmod>2014-11-09T19:01:11-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.charmes.net/post/</loc>
-    <lastmod>2017-07-09T15:58:01-05:00</lastmod>
+    <lastmod>2014-11-09T19:01:11-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.charmes.net/tags/release-process/</loc>
+    <lastmod>2014-11-09T19:01:11-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.charmes.net/tags/</loc>
+    <lastmod>2014-11-09T19:01:11-05:00</lastmod>
     <priority>0</priority>
   </url>
   
