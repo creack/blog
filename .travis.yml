@@ -12,6 +12,9 @@ before_install:
 install:
   - docker run -v $(pwd):/project -w /project jojomi/hugo hugo -v
 
+test:
+  - true
+
 deploy:
   skip_cleanup: true
   provider: script
