@@ -1,5 +1,7 @@
 sudo: required
 
+language: go
+
 services:
   - docker
 
@@ -10,10 +12,6 @@ before_install:
 script:
   - docker run -v $(pwd):/project -w /project jojomi/hugo hugo -v
 
-deploy:
-  provider: script
-  on:
-    branch: master
-  script:
-    - docker run -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_DEFAULT_REGION -e BUCKET_NAME     -v $(pwd):/project                      mesosphere/aws-cli s3 sync --acl "public-read" --sse "AES256" public/ s3://$BUCKET_NAME --exclude 'post'
-    - docker run -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_DEFAULT_REGION -e DISTRIBUTION_ID -v $(pwd):/project --entrypoint=/bin/sh mesosphere/aws-cli -c 'aws configure set preview.cloudfront true && aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths /index.html / /page/*'
+after_success:
+  - docker run -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_DEFAULT_REGION -e BUCKET_NAME     -v $(pwd):/project                      mesosphere/aws-cli s3 sync --acl "public-read" --sse "AES256" public/ s3://$BUCKET_NAME --exclude 'post'
+  - docker run -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_DEFAULT_REGION -e DISTRIBUTION_ID -v $(pwd):/project --entrypoint=/bin/sh mesosphere/aws-cli -c 'aws configure set preview.cloudfront true && aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths /index.html / /page/*'
