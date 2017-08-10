@@ -1,7 +1,5 @@
 sudo: required
 
-language: go
-
 services:
   - docker
 
@@ -9,11 +7,8 @@ before_install:
   - docker pull mesosphere/aws-cli
   - docker pull jojomi/hugo
 
-install:
+script:
   - docker run -v $(pwd):/project -w /project jojomi/hugo hugo -v
-
-test:
-  - true
 
 deploy:
   skip_cleanup: true
