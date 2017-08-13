@@ -1,5 +1,6 @@
 ---
-title: "Release Go code (and others) via Docker using Makefile"
+title: Release Go code (and others) via Docker using Makefile
+draft: false
 tags:
   - Golang
   - Docker

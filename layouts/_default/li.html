@@ -1,6 +1,8 @@
 <article class="li">
   <a href="{{ .Permalink }}">
+    {{ if .Params.thumbnail }}
     <div class="thumb"><img src="{{ .Site.BaseURL }}{{ .Params.thumbnail }}" alt="{{ .Title }}" height="100%"/></div>
+    {{ end }}
 
     <div class="inner">
       <h2 class="title">{{ .Title }}</h2>

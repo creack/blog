@@ -1,6 +1,8 @@
 <article class="sn">
 
+  {{ if .Params.thumbnail }}
   <div class="thumb"><img src="{{ .Site.BaseURL }}{{ .Params.thumbnail }}" alt="{{ .Title }}" height="100%"/></div>
+  {{ end }}
 
   <header class="article-header">
     <h1 class="title">{{ .Title }}</h1>
