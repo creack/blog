@@ -4,14 +4,16 @@ tags:
   - Golang
   - Docker
   - Release process
+  - Makefile
+categories:
+  - Golang
+  - Docker
+  - Makefile
 date: 2014-11-09T19:01:11-05:00
+thumbnail: images/docker-whale.png
+toc: true
+description: Demonstrate how to leverage Makefile in order to release lightweight Docker image for production.
 ---
-
-This is should be the final test!!
-
-<center>
-<img border="0" src="http://ddf912383141a8d7bbe4-e053e711fc85de3290f121ef0f0e3a1f.r87.cf1.rackcdn.com/docker-whale.png" />
-</center>
 
 In this article, I'll demonstrate how to leverage Makefile in order to release lightweight Docker image for production.
 
@@ -33,13 +35,13 @@ In order to create a release image, we first need to build the binary. We will h
 
 The main Dockerfile is the "classic" one. For our example:
 
-```plain
+```dockerfile
 # Using google/golang as base image
 FROM            google/golang:stable
 # Install Godep for vendoring
 RUN             go get github.com/tools/godep
 # Recompile the standard library without CGO
-RUN				CGO_ENABLED=0 go install -a std
+RUN             CGO_ENABLED=0 go install -a std
 # Declare the maintainer
 MAINTAINER      Guillaume J. Charmes <guillaume@charmes.net>
 
@@ -63,7 +65,7 @@ In order to release, we need a second Dockerfile. As Docker builds directories, 
 
 The release Makefile is very straight forward and look like this:
 
-```plain
+```dockerfile
 # Use "scratch" as base: it is an empty image.
 FROM            scratch
 # Set the entrypoint as the binary, so `docker run <image>` will behave as the binary
@@ -89,7 +91,7 @@ In order to build, we call `docker build` and create the `.build` file.
 The result is a full blown image roughly 600MB. `release` will help with this.
 The first step is to extract the binary and `/etc/ssl`. The `/etc/ssl` is mandatory only if you plan on using SSL (otherwise, Go will complain it does not find the certificates). Once extracted in a tarball, we build the release Dockerfile.
 
-```plain
+```makefile
 NAME            = example
 DOCKER_IMAGE    = 127.0.0.1:5000/$(NAME)
 
@@ -120,7 +122,7 @@ clean           :
 
 In the end, the directory tree should look like this:
 
-```plain
+```bash
 $> tree
 .
 ├── Dockerfile
@@ -143,14 +145,14 @@ As we saw, the release process is a dependency cascade, which make the Makefile 
 The advantages of using something like this is easily shown by `docker images`:
 
 Original image
-```plain
+```bash
 $> docker images example
 REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
 example             latest              e68fcc5482a8        10 seconds ago          605.3 MB
 ```
 
 Release image
-```plain
+```bash
 $> docker images 127.0.0.1:5000/example
 REPOSITORY               TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
 127.0.0.1:5000/example   latest              6e9e455bf60d        4 seconds ago          617.6 kB

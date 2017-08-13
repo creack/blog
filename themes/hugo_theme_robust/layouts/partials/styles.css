@@ -623,7 +623,8 @@ section.footer > header a {
 }
 
 .thumb {
-  background-image: url({{ .Site.BaseURL }}images/default.jpg);
+    #  background-image: url({{ .Site.BaseURL }}images/default.jpg);
+    text-align: center;
   background-size: cover;
 }
 

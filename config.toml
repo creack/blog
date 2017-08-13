@@ -1,4 +1,23 @@
 baseURL = "https://blog.charmes.net/"
-languageCode = "en-us"
 title = "Guillaume's Thoughts"
+
+googleAnalytics = "UA-89206555-2"
+
+languageCode = "en-us"
 theme = "hugo_theme_robust"
+
+copyright = "© 2017 Guillaume J. Charmes"
+
+[Author]
+    name = "Guillaume J. Charmes"
+    homepage = "https://blog.charmes.net"
+
+[outputs]
+    page = ["HTML", "AMP"]
+
+[params]
+  dateformat = "Jan 2, 2006" # Optional
+  # Fonts settings.
+  googlefonts = "https://fonts.googleapis.com/css?family=Lobster|Lato:400,700" # Optional, Include google fonts.
+  fontfamily = "Lato,YuGothic,'Hiragino Kaku Gothic Pro',Meiryo,sans-serif" # Optional, Override body font family.
+  logofontfamily = "Lobster, cursive" # Optional, Override logo font.
