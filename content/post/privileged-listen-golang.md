@@ -11,6 +11,7 @@ categories:
 draft: false
 date: 2015-06-20 17:42:42
 toc: true
+thumbnail: images/gopher.png
 description: Cleanly de-escalate after initiating privileged listen in Go.
 ---
 
