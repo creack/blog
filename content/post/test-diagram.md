@@ -21,14 +21,15 @@ France->Henry: says lol
 ```
 
 ```flow
-st=>start: Start
-e=>end
-op=>operation: My Operation
-op2=>operation: My Opera2tion
-cond=>condition: Yes or No or Maybe?
-st->op->cond
-st->op2->e
-cond(maybe)->op2
-cond(yes)->e
-cond(no)->op
+st=>start: Start:>http://www.google.com[blank]
+e=>end:>http://www.google.com
+op1=>operation: My Operation
+sub1=>subroutine: My Subroutine
+cond=>condition: Yes
+or No?:>http://www.google.com
+io=>inputoutput: catch something...
+
+st->op1->cond
+cond(yes)->io->e
+cond(no)->sub1(right)->op1
 ```
