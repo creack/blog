@@ -10,6 +10,9 @@
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
 
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/sequence-diagram-min.css">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/diagrams.css">
+
     <title>{{ block "title" . }}{{ end }}{{ .Site.Title }}</title>
     {{ block "meta" . }}{{ end }}
     <style>
@@ -54,7 +57,12 @@
       </div>
     </footer>
 
-    <script src="{{ $.Site.BaseURL }}js/highlight.pack.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script>
+    <script src="{{ .Site.BaseURL }}js/flowchart.min.js"></script>
+    <script src="{{ .Site.BaseURL }}js/highlight.pack.js"></script>
+    <script src="{{ .Site.BaseURL }}js/sequence-diagram-min.js"></script>
+    <script src="{{ .Site.BaseURL }}js/diagrams.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
   </body>
 </html>
