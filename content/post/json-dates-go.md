@@ -17,12 +17,12 @@ thumbnail: images/jsondate.jpg
 description: Use arbitrary date format with json marshal/unmarshal in Go.
 ---
 
-# TL;DR
+## TL;DR
 
 Arbitrary date unmarshal support + easily set marshal date format for both json and bson.
 The code and examples can be found here: https://github.com/simplereach/timeutils.
 
-## Small example
+### Small example
 
 ```go
 package main
@@ -55,13 +55,13 @@ func main() {
 }
 ```
 
-# The Standard Library
+## The Standard Library
 
 Go provide an extensive support for dates/time in the standard library with the package `time`.
 
 This allows to easily deal with dates, compare them or make operations on them as well as moving from a timezone to an other.
 
-## Example
+### Example
 
 ```go
 package main
@@ -76,7 +76,7 @@ func main() {
 }
 ```
 
-## Formating
+### Formating
 
 Within the `time.Time` object, there are easy ways to format the date:
 
@@ -99,11 +99,11 @@ func main() {
 }
 ```
 
-## Parsing
+### Parsing
 
 When it comes to parsing, once again, the standard library offers tools.
 
-### Parsing date string
+#### Parsing date string
 
 ```go
 package main
@@ -123,7 +123,7 @@ func main() {
 }
 ```
 
-### "Parsing" timestamp
+#### "Parsing" timestamp
 
 ```go
 package main
@@ -143,21 +143,17 @@ This is great, but what if we don't know what time format we are expecting? i.e.
 
 A solution would be to iterate through the available time formats until we succeed, but this is often cumbersome and unreliable.
 
-### Approxidate
+#### Approxidate
 
 The git library has this `Approxidate` component that parses arbitrary date format and there is a Golang binding so we can use it!
 
-http://godoc.org/github.com/simplereach/timeutils#ParseDateString
+[https://godoc.org/github.com/simplereach/timeutils#ParseDateString](https://godoc.org/github.com/simplereach/timeutils#ParseDateString)
 
 This expects a string as input and will do everything it can to properly yield a time object.
 
-```go
+## Case of JSON Marshal/Unmarshal
 
-```
-
-# Case of JSON Marshal/Unmarshal
-
-## Unmarshal
+### Unmarshal
 
 Let's start with the unmarshal. What if we don't want to parse the time manually and let `json.Unmarshal` handle it? Let's try:
 
@@ -219,7 +215,7 @@ So it does not work, how can we work around this?
 
 A solution would be to implement the `json.Unmarshaler` interface and handle our own parsing format, but we'll get to this.
 
-## Marshal
+### Marshal
 
 Ok, we have our time object, and we want to send it as json. Nothing easier:
 
@@ -241,12 +237,12 @@ It works fine :) However, the client expects times as RFC1123, how can we set th
 
 A way to do so would be to implement the `json.Marshaler` interface and handling our own formatting.
 
-# Custom Marshal/Unmarshal
+## Custom Marshal/Unmarshal
 
 In order to tell Go to use a custom method for json marshal/unmarshal, one needs to implement the `json.Marshaler` and `json.Unmarshaler` interfaces.
 As we can't do that on imported type `time.Time`, we need to create a custom type.
 
-## Custom type
+### Custom type
 
 In order to create a custom type in Go, we simply do:
 
@@ -272,7 +268,7 @@ type myTime struct {
 
 This way, we can access all the methods of the nested time object.
 
-## Unmarshal RFC1123
+### Unmarshal RFC1123
 
 As we expect RFC1123, we need a custom parsing, so le'ts implement `json.Unmarshaler`.
 Let's take our first RFC1123 example and improve it:
@@ -321,7 +317,7 @@ This receives the json buffer and return an error. It is expected to set the par
 
 The first step, has we expect valid json is to trim down the `"` from the string, then we call the `time.Parse` and finally set the result to our object.
 
-## Marshal RFC1123
+### Marshal RFC1123
 
 Instead of the default RFC3339, let's have json encode our time as RFC1123:
 
@@ -351,10 +347,10 @@ func main() {
 Same idea as unmarshal. Here we only dump data so we don't want the receiver to be a pointer and we make sure that we return valid json wrapped in `"`.
 
 
-# Going further
+## Going further
 
 Changing the time format is great, but what if we need to move around dates as a timestamp integer? Or as a nanosecond timestamp? Or if we expect arbitrary format?
 
 What if we have a REST API that need to move date between json and bson?
 
-The `timeutils` library (http://github.com/simplereach/timeutils) offers a `Time` type that supports arbitrary time format via `aproxidate` as well as Timestamp and nanosecond precision both for marshal/unmarshal in json and bson.
+The `timeutils` library ([https://github.com/simplereach/timeutils](https://github.com/simplereach/timeutils)) offers a `Time` type that supports arbitrary time format via `aproxidate` as well as Timestamp and nanosecond precision both for marshal/unmarshal in json and bson.

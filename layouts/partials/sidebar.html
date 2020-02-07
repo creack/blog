@@ -1,27 +1,10 @@
 <aside class="l-sidebar">
 
   <div class="sections sidebar">
-    {{ range $key, $value := .Site.Taxonomies }}
-    <section class="sidebar">
-      <header style="text-transform: uppercase;">{{ $key }}</header>
-      <div>
-        <ul class="terms">
-          {{ range first 10 $value.ByCount }}<li><a href="{{ $.Site.BaseURL}}{{ $key }}/{{ .Name | urlize }}">{{ .Name }}</a></li>{{ end }}
-        </ul>
-      </div>
-    </section>
-    {{ end }}
-
-    <section class="sidebar">
-      <header style="text-transform: uppercase;">Latests</header>
-      <div>
-        <div class="articles sm">
-          {{ range $i, $p := (first 5 .Site.Pages) }}
-            {{ .Render "li_sm" }}
-          {{ end }}
-        </div>
-      </div>
-    </section>
+    {{ partial "categories.html" . }}
+    {{ partial "tags.html" . }}
+    {{ partial "latests.html" . }}
+    {{/* partial "author.html" .  */}}
   </div>
 
 </aside>
