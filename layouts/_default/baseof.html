@@ -47,6 +47,12 @@ ga('send', 'pageview');
 
     <footer class="l-footer">
       <div class="l-container">
+        <p>
+          <a target="_blank" href="https://travis-ci.org/creack/blog"><img align="right" src="https://travis-ci.org/creack/blog.svg?branch=master" /></a>
+          <!-- IPv6-test.com button BEGIN -->
+          <a target="_blank" href="http://ipv6-test.com/validate.php?url=blog.charmes.net"><img align="right" src="{{ .Site.BaseURL }}images/button-ipv6-small.png" height="20" alt="ipv6 ready" title="ipv6 ready" border="0" /></a>
+          <!-- IPv6-test.com button END -->
+        </p>
         <p>{{ with .Site.Copyright }}{{ . | safeHTML }}{{ else }}<span class="h-logo">&copy; {{ .Site.Title }}</span>{{ end }}</p>
         <aside>
           <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
@@ -59,4 +65,3 @@ ga('send', 'pageview');
     <script>hljs.initHighlightingOnLoad();</script>
   </body>
 </html>
-

@@ -6,7 +6,7 @@ googleAnalytics = "UA-89206555-2"
 languageCode = "en-us"
 theme = "hugo_theme_robust"
 
-copyright = "© 2017 Guillaume J. Charmes"
+copyright = "© 2020 Guillaume J. Charmes"
 
 [Author]
     name = "Guillaume J. Charmes"
@@ -16,8 +16,27 @@ copyright = "© 2017 Guillaume J. Charmes"
     page = ["HTML", "AMP"]
 
 [params]
+  #description = "Personal thoughts and experiences about Go and various topics."
   dateformat = "Jan 2, 2006" # Optional
   # Fonts settings.
   googlefonts = "https://fonts.googleapis.com/css?family=Lobster|Lato:400,700" # Optional, Include google fonts.
   fontfamily = "Lato,YuGothic,'Hiragino Kaku Gothic Pro',Meiryo,sans-serif" # Optional, Override body font family.
   logofontfamily = "Lobster, cursive" # Optional, Override logo font.
+
+[params.author]
+  thumbnail = "images/author.jpg"
+  name = "Guillaume J. Charmes"
+  description = "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p><p>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
+  twitter = "https://twitter.com/charme_g"
+  github = "https://github.com/creack"
+
+[markup.highlight]
+  codeFences = true
+  guessSyntax = false
+  hl_Lines = ""
+  lineNoStart = 1
+  lineNos = true
+  lineNumbersInTable = true
+  noClasses = true
+  style = "monokai"
+  tabWidth = 4

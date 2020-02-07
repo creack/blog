@@ -4,8 +4,8 @@ services:
   - docker
 
 before_install:
-  - docker pull mesosphere/aws-cli
-  - docker pull jojomi/hugo
+  - img=mesosphere/aws-cli:1.14.5@sha256:7d42da4ea2da6fe7d8769aef2bd9620697214ee2757ac15abaa3f4cda601bc07; docker pull $img && docker tag $img mesosphere/aws-cli
+  - img=jojomi/hugo:0.62.2@sha256:68a292a0373eb3c0bb81ffaf5ff78076e60709a2937826bd02ad6fbee781e413; docker pull $img && docker tag $img jojomi/hugo
 
 script:
   - docker run -v $(pwd):/project -w /project jojomi/hugo hugo -v

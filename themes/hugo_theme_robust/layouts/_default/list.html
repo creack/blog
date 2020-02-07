@@ -12,7 +12,10 @@
 
     <div class="articles">
       <div class="mrow">
-        {{ range (.Paginate .Data.Pages).Pages }}
+        {{ $pctx := . }}
+        {{ if .IsHome }}{{ $pctx = .Site }}{{ end }}
+        {{ $paginator := .Paginate $pctx.RegularPages }}
+        {{ range $paginator.Pages }}
         <div class="mcol c6">{{ .Render "li" }}</div>
         {{ end }}
       </div>
